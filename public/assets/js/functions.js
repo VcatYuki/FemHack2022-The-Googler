@@ -3,10 +3,31 @@ var myNodelist = document.getElementsByTagName("LI");
 var i;
 for (i = 0; i < myNodelist.length; i++) {
   var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
+  var span2 = document.createElement("SPAN");
+  var span3 = document.createElement("SPAN");
+  var close = document.createTextNode("\u00D7");
+  var tag = document.createTextNode("\uFF03");
+  var edit = document.createTextNode("Edit");
   span.className = "closeb";
-  span.appendChild(txt);
+  span2.className = "tag";
+  span3. className = "edit";
+  span3.appendChild(edit);
+  span2.appendChild(tag);
+  span.appendChild(close); 
+  myNodelist[i].appendChild(span3);
+  myNodelist[i].appendChild(span2);
   myNodelist[i].appendChild(span);
+}
+// Click on a tag button to add a tag 
+/* NOT WORKING :() */
+var tag = document.querySelector(".tag");
+var i;
+let input = "";
+for (i = 0; i < tag.length; i ++) {
+  tag[i].onclick = function() {
+    input= '<input type="text" id="tagInput" placeholder="Add tag...">'
+    document.querySelector(".tag").innerHTML = input;
+  }
 }
  
 // Click on a close button to hide the current list item
@@ -19,36 +40,6 @@ for (i = 0; i < closeb.length; i++) {
     div.style.display = "none";
   }
 } 
-
-// Tasks Status
-
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  console.log('click')
-  if (ev.target.tagName === 'LI') {
-    console.log(ev)
-    if (ev.target.className.match(/ongoing/)){
-      ev.target.classList.remove('ongoing');  
-      ev.target.classList.toggle('checked');
-    }
-    else if (ev.target.className.match(/ongoing|checked/)){
-      ev.target.classList.remove('checked');  
-      ev.target.classList.toggle('close');
-      console.log('hello')
-      /* setTimeout(remove(ev), 5000) */
-      
-      setTimeout(function () {
-        ev.target.style.display ="none";
-      }, 5000)
-    }
-    
-    else {      
-    ev.target.classList.toggle('ongoing');    
-    }
-  }
-}, 
-false
-);
 
 var close = document.getElementsByClassName("close");
 var i;
@@ -81,9 +72,19 @@ function newElement() {
   document.getElementById("pInput").value ="";
   li.classList.remove('new');
   var span = document.createElement("SPAN");
+  var span2 = document.createElement("SPAN");
+  var span3 = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
-  span.className = "close";
+  var tag = document.createTextNode("\uFF03");
+  var edit = document.createTextNode("Edit");
+  span.className = "closeb";
+  span2.className = "tag";
+  span3. className = "edit";
+  span3.appendChild(edit);
+  span2.appendChild(tag);
   span.appendChild(txt);
+  li.appendChild(span3);
+  li.appendChild(span2);
   li.appendChild(span);
 
   for (i = 0; i < close.length; i++) {
